@@ -1,6 +1,18 @@
 <html>
     <h2> Final Result</h2>
     <body>
-        The output is {{result}}
+        <table>
+        {% for key, value in result %}
+        <tr>
+            <th>
+                {{ key }}
+            </th>
+            <th>
+                {{ value }}
+            </th>
+        </tr>
+        {% endfor %}
+        </table>
     </body>
+
 </html>
