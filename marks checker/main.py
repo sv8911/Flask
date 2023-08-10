@@ -1,6 +1,6 @@
 #Integrate HTML with Flask
 #HTTP verb GET and Post
-
+##jinja template
 from flask import Flask, redirect, url_for, render_template, request
 
 app=Flask(__name__)
@@ -11,17 +11,18 @@ def welcome():
 
 @app.route('/success/<int:score>')
 def success(score):
-    res=''
+    res=""
     if score>=50:
-        res="pass"
+        res="Pass"
     else:
-        res="fail"
-    #return "marks is   "+ str(score)
-    return render_template('result.html', result=res)
+        res="Fail"    
+    exp={'score':score, 'res': res }
+    return render_template('result.html', result=exp)
 
 @app.route('/fail/<int:score>')
 def fail(score):
-    return "marks is failed is "+ str(score)
+    return render_template('result.html', result=score)
+#    return "marks is failed is "+ str(score)
 
 ##Result checker
 @app.route('/results/<int:marks>')
